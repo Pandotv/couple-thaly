@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para Thalyta Lorrayne ✨</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1a0b2e 0%, #2d1b4e 25%, #4a2c6d 50%, #2d1b4e 75%, #1a0b2e 100%);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            color: #fff;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .star {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: #fff;
+            border-radius: 50%;
+            animation: twinkle 3s infinite;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.2; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.2); }
+        }
+
+        .floating-hearts {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        .heart {
+            position: absolute;
+            font-size: 20px;
+            opacity: 0;
+            animation: floatUp 8s infinite;
+        }
+
+        @keyframes floatUp {
+            0% { opacity: 0; transform: translateY(100vh) rotate(0deg); }
+            10% { opacity: 0.6; }
+            90% { opacity: 0.6; }
+            100% { opacity: 0; transform: translateY(-100px) rotate(360deg); }
+        }
+
+        .container {
+            position: relative;
+            z-index: 1;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 80px 20px;
+            animation: fadeInUp 1s ease;
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .hero h1 {
+            font-size: 3.5em;
+            margin-bottom: 20px;
+            text-shadow: 0 0 30px rgba(255, 105, 180, 0.5);
+            background: linear-gradient(45deg, #ff69b4, #da70d6, #ba55d3, #ff69b4);
+            background-size: 300% 300%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: shimmer 3s ease infinite;
+        }
+
+        @keyframes shimmer {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        .hero p {
+            font-size: 1.3em;
+            color: #e0b0ff;
+            font-style: italic;
+        }
+
+        .section {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px;
+            margin: 30px 0;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            animation: fadeInUp 0.8s ease;
+        }
+
+        .section h2 {
+            color: #ff69b4;
+            font-size: 2em;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .info-card {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 20px;
+            border-radius: 15px;
+            border-left: 4px solid #ff69b4;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .info-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(255, 105, 180, 0.2);
+        }
+
+        .info-card h3 {
+            color: #da70d6;
+            margin-bottom: 10px;
+            font-size: 1.1em;
+        }
+
+        .info-card p {
+            color: #e0e0e0;
+            line-height: 1.6;
+        }
+
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .tag {
+            background: linear-gradient(135deg, #ff69b4, #da70d6);
+            padding: 8px 20px;
+            border-radius: 25px;
+            font-size: 0.95em;
+            font-weight: 500;
+            box-shadow: 0 4px 15px rgba(255, 105, 180, 0.3);
+        }
+
+        .proposal-section {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 40px 20px;
+            position: relative;
+        }
+
+        .proposal-section h2 {
+            font-size: 3em;
+            margin-bottom: 60px;
+            color: #fff;
+            text-shadow: 0 0 20px rgba(255, 105, 180, 0.8);
+            animation: pulse 2s ease infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.02); }
+        }
+
+        .buttons-container {
+            display: flex;
+            gap: 40px;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            position: relative;
+            width: 100%;
+            min-height: 200px;
+        }
+
+        .btn {
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-sim {
+            padding: 25px 80px;
+            font-size: 2em;
+            background: linear-gradient(135deg, #ff1493, #ff69b4);
+            color: white;
+            box-shadow: 0 10px 40px rgba(255, 20, 147, 0.5);
+            animation: heartbeat 1.5s ease infinite;
+        }
+
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            25% { transform: scale(1.05); }
+            50% { transform: scale(1); }
+            75% { transform: scale(1.05); }
+        }
+
+        .btn-sim:hover {
+            transform: scale(1.1);
+            box-shadow: 0 15px 50px rgba(255, 20, 147, 0.7);
+        }
+
+        .btn-nao {
+            padding: 12px 30px;
+            font-size: 1em;
+            background: rgba(255, 255, 255, 0.2);
+            color: #ccc;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            position: absolute;
+            transition: all 0.2s ease;
+        }
+
+        .btn-nao:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .celebration {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .celebration.active {
+            display: flex;
+        }
+
+        .celebration h2 {
+            font-size: 4em;
+            color: #ff69b4;
+            text-shadow: 0 0 30px rgba(255, 105, 180, 0.8);
+            animation: bounce 1s ease infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: #ff69b4;
+            animation: confettiFall 3s ease-out forwards;
+        }
+
+        @keyframes confettiFall {
+            0% { transform: translateY(-100vh) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
+        }
+
+        .love-message {
+            font-size: 1.5em;
+            color: #fff;
+            margin-top: 30px;
+            max-width: 600px;
+            line-height: 1.8;
+        }
+
+        .photo-placeholder {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            margin: 0 auto 30px;
+            overflow: hidden;
+            box-shadow: 0 0 40px rgba(255, 105, 180, 0.4);
+            border: 4px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .photo-placeholder img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .divider {
+            text-align: center;
+            margin: 40px 0;
+            font-size: 2em;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.2em; }
+            .proposal-section h2 { font-size: 2em; }
+            .btn-sim { padding: 20px 50px; font-size: 1.5em; }
+            .buttons-container { gap: 20px; }
+            .section { padding: 25px; }
+            .info-grid { grid-template-columns: 1fr; }
+        }
+
+        .scroll-indicator {
+            text-align: center;
+            padding: 40px;
+            font-size: 2em;
+            animation: bounceArrow 2s infinite;
+        }
+
+        @keyframes bounceArrow {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(10px); }
+        }
+
+        .swipe-hint {
+            text-align: center;
+            padding: 60px 20px;
+            margin: 40px 0;
+        }
+
+        .swipe-text {
+            font-size: 1.4em;
+            color: #e0b0ff;
+            margin-bottom: 25px;
+            font-style: italic;
+        }
+
+        .swipe-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            padding: 18px 36px;
+            font-size: 1.2em;
+            font-weight: 600;
+            color: #fff;
+            text-decoration: none;
+            background: linear-gradient(135deg, #ff1493, #ff69b4);
+            border-radius: 50px;
+            box-shadow: 0 8px 30px rgba(255, 20, 147, 0.4);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .swipe-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 12px 40px rgba(255, 20, 147, 0.6);
+        }
+
+        .swipe-button .arrow {
+            font-size: 1.3em;
+            animation: arrowBounce 1.5s ease infinite;
+        }
+
+        @keyframes arrowBounce {
+            0%, 100% { transform: translateX(0); }
+            50% { transform: translateX(8px); }
+        }
+
+        .swipe-sub {
+            margin-top: 18px;
+            color: #b090d0;
+            font-size: 0.95em;
+        }
+    </style>
+</head>
+<body>
+    <div class="stars" id="stars"></div>
+    <div class="floating-hearts" id="hearts"></div>
+
+    <div class="container">
+        <div class="hero">
+            <div class="photo-placeholder">
+                <img src="flores.jpeg" alt="flores">
+            </div>
+            <h1>Thalyta Lorrayne</h1>
+            <p>alguém incrível merece um site incrível 💖</p>
+        </div>
+
+        <div class="scroll-indicator">⬇️</div>
+
+        <div class="section">
+            <h2>Sobre a pessoa que vai abrir essa página</h2>
+            <div class="info-grid">
+                <div class="info-card">
+                    <h3>Personalidade</h3>
+                    <p>a mulher onça que se deixou conquistar pelo homem engraçadinho kkk</p>
+                </div>
+                <div class="info-card">
+                    <h3>Profissão</h3>
+                    <p>Fisioterapeuta apaixonada!!</p>
+                </div>
+                <div class="info-card">
+                    <h3>Estilo</h3>
+                    <p>vibe única: uma coisa meio bruxa, meio Hello Kitty. Alternativa e fofa ao mesmo tempo. adora livrarias, exposições e lugares com estética interessante.</p>
+                </div>
+                <div class="info-card">
+                    <h3>Lifestyle</h3>
+                    <p>gosta do meio fitness, cuida da saúde e do corpo.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="divider">💜</div>
+
+        <div class="section">
+            <h2>coisas que ela gosta...</h2>
+            <div class="info-grid">
+                <div class="info-card">
+                    <h3>Filmes</h3>
+                    <p>filmes com roteiros inteligentes e finais que fazem pensar. Mas também adora um filme besta para relaxar. quando vamos ver Doomsday?</p>
+                </div>
+                <div class="info-card">
+                    <h3>Música</h3>
+                    <p>aquela do MPB e músicas com letras significativas. mas tbm um bom funk para dançar e se divertir.</p>
+                </div>
+                <div class="info-card">
+                    <h3>Literatura & Filosofia</h3>
+                    <p>ama livros... mas pra autores que provocam reflexões profundas sobre a existência e a vida 🤔</p>
+                </div>
+                <div class="info-card">
+                    <h3>Animais</h3>
+                    <p>quase a branca de neve que leva jeito pra animais, mas ama especialmente cachorros. num resiste a um doguinho</p>
+                </div>
+                <div class="info-card">
+                    <h3>Comidinhas</h3>
+                    <p>tem fraqueza por chocolate, mas é virada no Milky Moo e uma boa comida caseira feita com carinho :p</p>
+                </div>
+                <div class="info-card">
+                    <h3>o meio cult</h3>
+                    <p>Arte, fotografia, moda e exposições. Uma pessoa culta que aprecia o belo em todas as formas... eu acho isso lindo</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="divider">✨</div>
+
+        <div class="section">
+            <h2>e o que é que thalyta mais valoriza?</h2>
+            <div class="tags">
+                <span class="tag">Conversas profundas</span>
+                <span class="tag">Comportamento humano</span>
+                <span class="tag">Sociedade</span>
+                <span class="tag">Ciência</span>
+                <span class="tag">Tudo que foge do óbvio</span>
+                <span class="tag">Cabeça e visão de futuro</span>
+                <span class="tag">Autenticidade</span>
+                <span class="tag">Crescimento pessoal</span>
+            </div>
+            <p style="text-align: center; margin-top: 30px; font-size: 1.2em; color: #e0b0ff; font-style: italic;">
+                "Acho que no fim eu gosto de tudo e nada ao mesmo tempo"
+            </p>
+        </div>
+
+        <div class="divider">🌙</div>
+
+        <div class="swipe-hint">
+            <p class="swipe-text">A última pergunta está esperando...</p>
+            <a href="pergunta.html" class="swipe-button">
+                <span>ir para a página 2</span>
+                <span class="arrow">→</span>
+            </a>
+            <p class="swipe-sub">(ou arrasta pro lado no celular)</p>
+        </div>
+    </div>
+
+    <script>
+        // Criar estrelas
+        const starsContainer = document.getElementById('stars');
+        for (let i = 0; i < 100; i++) {
+            const star = document.createElement('div');
+            star.className = 'star';
+            star.style.left = Math.random() * 100 + '%';
+            star.style.top = Math.random() * 100 + '%';
+            star.style.animationDelay = Math.random() * 3 + 's';
+            starsContainer.appendChild(star);
+        }
+
+        // Criar corações flutuantes
+        const heartsContainer = document.getElementById('hearts');
+        const heartEmojis = ['💜', '💖', '💗', '💓', '💕', '🖤', '🤍'];
+        for (let i = 0; i < 15; i++) {
+            const heart = document.createElement('div');
+            heart.className = 'heart';
+            heart.textContent = heartEmojis[Math.floor(Math.random() * heartEmojis.length)];
+            heart.style.left = Math.random() * 100 + '%';
+            heart.style.animationDelay = Math.random() * 8 + 's';
+            heart.style.animationDuration = (6 + Math.random() * 4) + 's';
+            heartsContainer.appendChild(heart);
+        }
+
+        // Swipe para ir para pergunta.html
+        let touchStartX = 0;
+        let touchEndX = 0;
+
+        document.addEventListener('touchstart', function(e) {
+            touchStartX = e.changedTouches[0].screenX;
+        }, false);
+
+        document.addEventListener('touchend', function(e) {
+            touchEndX = e.changedTouches[0].screenX;
+            handleSwipe();
+        }, false);
+
+        function handleSwipe() {
+            if (touchEndX < touchStartX - 50) {
+                window.location.href = 'pergunta.html';
+            }
+        }
+    </script>
+</body>
+</html>

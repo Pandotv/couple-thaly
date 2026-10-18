@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quer namorar comigo? - Thalyta</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1a0b2e 0%, #2d1b4e 25%, #4a2c6d 50%, #2d1b4e 75%, #1a0b2e 100%);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            color: #fff;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .star {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: #fff;
+            border-radius: 50%;
+            animation: twinkle 3s infinite;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.2; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.2); }
+        }
+
+        .floating-hearts {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        .heart {
+            position: absolute;
+            font-size: 20px;
+            opacity: 0;
+            animation: floatUp 8s infinite;
+        }
+
+        @keyframes floatUp {
+            0% { opacity: 0; transform: translateY(100vh) rotate(0deg); }
+            10% { opacity: 0.6; }
+            90% { opacity: 0.6; }
+            100% { opacity: 0; transform: translateY(-100px) rotate(360deg); }
+        }
+
+        .back-link {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 100;
+            color: #e0b0ff;
+            text-decoration: none;
+            font-size: 1.1em;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 16px;
+            border-radius: 30px;
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .back-link:hover {
+            background: rgba(255, 255, 255, 0.15);
+            transform: translateX(-3px);
+        }
+
+        .page-number {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 100;
+            color: #b090d0;
+            font-size: 0.95em;
+            padding: 8px 14px;
+            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .proposal-section {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 40px 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .proposal-section h2 {
+            font-size: 2.8em;
+            margin-bottom: 30px;
+            color: #fff;
+            text-shadow: 0 0 20px rgba(255, 105, 180, 0.8);
+            animation: pulse 2s ease infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.02); }
+        }
+
+        .proposal-subtitle {
+            color: #e0b0ff;
+            font-size: 1.2em;
+            margin-bottom: 60px;
+            max-width: 500px;
+            line-height: 1.6;
+            font-style: italic;
+        }
+
+        .buttons-container {
+            display: flex;
+            gap: 40px;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            min-height: 200px;
+        }
+
+        .btn {
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-sim {
+            padding: 25px 80px;
+            font-size: 2em;
+            background: linear-gradient(135deg, #ff1493, #ff69b4);
+            color: white;
+            box-shadow: 0 10px 40px rgba(255, 20, 147, 0.5);
+            animation: heartbeat 1.5s ease infinite;
+        }
+
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            25% { transform: scale(1.05); }
+            50% { transform: scale(1); }
+            75% { transform: scale(1.05); }
+        }
+
+        .btn-sim:hover {
+            transform: scale(1.1);
+            box-shadow: 0 15px 50px rgba(255, 20, 147, 0.7);
+        }
+
+        .btn-nao {
+            padding: 12px 30px;
+            font-size: 1em;
+            background: rgba(255, 255, 255, 0.2);
+            color: #ccc;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            position: absolute;
+            transition: all 0.2s ease;
+        }
+
+        .btn-nao:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .hint {
+            margin-top: 80px;
+            color: #b090d0;
+            font-size: 0.95em;
+            font-style: italic;
+        }
+
+        .celebration {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .celebration.active {
+            display: flex;
+        }
+
+        .celebration h2 {
+            font-size: 3.5em;
+            color: #ff69b4;
+            text-shadow: 0 0 30px rgba(255, 105, 180, 0.8);
+            animation: bounce 1s ease infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: #ff69b4;
+            animation: confettiFall 3s ease-out forwards;
+        }
+
+        @keyframes confettiFall {
+            0% { transform: translateY(-100vh) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
+        }
+
+        .love-message {
+            font-size: 1.4em;
+            color: #fff;
+            margin-top: 30px;
+            max-width: 600px;
+            line-height: 1.8;
+        }
+
+        .video-btn {
+            margin-top: 40px;
+            padding: 16px 32px;
+            font-size: 1.2em;
+            background: rgba(255, 255, 255, 0.15);
+            color: #fff;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .video-btn:hover {
+            background: rgba(255, 255, 255, 0.25);
+            transform: scale(1.05);
+        }
+
+        .video-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #000;
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .video-overlay.active {
+            display: flex;
+        }
+
+        .video-overlay video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .video-back-btn {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 2001;
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.1em;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 20px;
+            border-radius: 30px;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .video-back-btn:hover {
+            background: rgba(0, 0, 0, 0.7);
+            transform: translateX(-3px);
+        }
+
+        @media (max-width: 768px) {
+            .proposal-section h2 { font-size: 2em; }
+            .proposal-subtitle { font-size: 1em; margin-bottom: 50px; }
+            .btn-sim { padding: 20px 50px; font-size: 1.5em; }
+            .buttons-container { gap: 20px; }
+            .celebration h2 { font-size: 2.5em; }
+            .love-message { font-size: 1.1em; }
+        }
+    </style>
+</head>
+<body>
+    <div class="stars" id="stars"></div>
+    <div class="floating-hearts" id="hearts"></div>
+
+    <a href="index.html" class="back-link">
+        <span>&#8592;</span>
+        <span>voltar</span>
+    </a>
+
+    <div class="page-number">página 2 de 2</div>
+
+    <div class="proposal-section" id="proposal">
+        <h2>Quer namorar comigo?</h2>
+        <p class="proposal-subtitle">sei que a gente ainda tá escrevendo nossa história, mas quero muito continuar escrevendo ela do seu lado.</p>
+        <div class="buttons-container" id="buttonsContainer">
+            <button class="btn btn-sim" onclick="aceitar()">SIM</button>
+            <button class="btn btn-nao" id="btnNao">não</button>
+        </div>
+        <p class="hint"> </p>
+    </div>
+
+    <div class="celebration" id="celebration">
+        <h2>nao tinha outra resposta ne?(kkk..)</h2>
+        <p class="love-message">
+            quero muito dar certo contigo.<br><br>
+            <br>
+            te adoro.
+        </p>
+        <button class="video-btn" onclick="abrirVideo()">ver nossa música</button>
+    </div>
+
+    <div class="video-overlay" id="videoOverlay">
+        <button class="video-back-btn" onclick="fecharVideo()">← voltar</button>
+        <video id="videoPlayer" src="um-amor-puro.mp4" loop autoplay controls></video>
+    </div>
+
+    <script>
+        // Criar estrelas
+        const starsContainer = document.getElementById('stars');
+        for (let i = 0; i < 100; i++) {
+            const star = document.createElement('div');
+            star.className = 'star';
+            star.style.left = Math.random() * 100 + '%';
+            star.style.top = Math.random() * 100 + '%';
+            star.style.animationDelay = Math.random() * 3 + 's';
+            starsContainer.appendChild(star);
+        }
+
+        // Criar corações flutuantes
+        const heartsContainer = document.getElementById('hearts');
+        const heartEmojis = ['💜', '💖', '💗', '💓', '💕', '🖤', '🤍'];
+        for (let i = 0; i < 15; i++) {
+            const heart = document.createElement('div');
+            heart.className = 'heart';
+            heart.textContent = heartEmojis[Math.floor(Math.random() * heartEmojis.length)];
+            heart.style.left = Math.random() * 100 + '%';
+            heart.style.animationDelay = Math.random() * 8 + 's';
+            heart.style.animationDuration = (6 + Math.random() * 4) + 's';
+            heartsContainer.appendChild(heart);
+        }
+
+        // Lógica do botão Não
+        const btnNao = document.getElementById('btnNao');
+        const buttonsContainer = document.getElementById('buttonsContainer');
+        let naoClicks = 0;
+        let naoSize = 1;
+
+        function moverBotaoNao() {
+            const containerRect = buttonsContainer.getBoundingClientRect();
+            const btnRect = btnNao.getBoundingClientRect();
+            
+            const maxX = containerRect.width - btnRect.width;
+            const maxY = containerRect.height - btnRect.height;
+            
+            let newX = Math.random() * maxX;
+            let newY = Math.random() * maxY;
+            
+            btnNao.style.left = newX + 'px';
+            btnNao.style.top = newY + 'px';
+            btnNao.style.right = 'auto';
+            btnNao.style.bottom = 'auto';
+        }
+
+        // Desktop: mouseover
+        btnNao.addEventListener('mouseover', function() {
+            moverBotaoNao();
+        });
+
+        // Mobile: touch/click
+        btnNao.addEventListener('click', function(e) {
+            e.preventDefault();
+            naoClicks++;
+            naoSize -= 0.15;
+            
+            if (naoSize <= 0) {
+                btnNao.style.display = 'none';
+                return;
+            }
+            
+            btnNao.style.transform = `scale(${naoSize})`;
+            btnNao.style.opacity = naoSize;
+            moverBotaoNao();
+        });
+
+        // Touch para mobile
+        btnNao.addEventListener('touchstart', function(e) {
+            e.preventDefault();
+            naoClicks++;
+            naoSize -= 0.15;
+            
+            if (naoSize <= 0) {
+                btnNao.style.display = 'none';
+                return;
+            }
+            
+            btnNao.style.transform = `scale(${naoSize})`;
+            btnNao.style.opacity = naoSize;
+            moverBotaoNao();
+        });
+
+        // Função aceitar
+        function aceitar() {
+            document.getElementById('celebration').classList.add('active');
+            
+            for (let i = 0; i < 100; i++) {
+                setTimeout(() => {
+                    const confetti = document.createElement('div');
+                    confetti.className = 'confetti';
+                    confetti.style.left = Math.random() * 100 + '%';
+                    confetti.style.background = `hsl(${Math.random() * 360}, 100%, 50%)`;
+                    confetti.style.width = (5 + Math.random() * 10) + 'px';
+                    confetti.style.height = confetti.style.width;
+                    document.getElementById('celebration').appendChild(confetti);
+                }, i * 30);
+            }
+        }
+
+        // Funções do vídeo
+        function abrirVideo() {
+            const overlay = document.getElementById('videoOverlay');
+            const video = document.getElementById('videoPlayer');
+            overlay.classList.add('active');
+            video.play();
+        }
+
+        function fecharVideo() {
+            const overlay = document.getElementById('videoOverlay');
+            const video = document.getElementById('videoPlayer');
+            overlay.classList.remove('active');
+            video.pause();
+            video.currentTime = 0;
+        }
+
+        // Inicializar posição do botão Não
+        window.addEventListener('load', function() {
+            const containerRect = buttonsContainer.getBoundingClientRect();
+            btnNao.style.position = 'absolute';
+            btnNao.style.left = (containerRect.width * 0.6) + 'px';
+            btnNao.style.top = '0px';
+        });
+    </script>
+</body>
+</html>
